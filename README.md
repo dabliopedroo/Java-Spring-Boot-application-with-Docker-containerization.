@@ -1,37 +1,58 @@
 # Java Spring Boot Application with Docker
 
-Aplicação desenvolvida com Java e Spring Boot, utilizando Maven e Docker para execução em um ambiente containerizado.
+Projeto desenvolvido com **Java e Spring Boot**, com foco na **containerização de aplicações utilizando Docker**.
 
-## 🚀 Tecnologias
+A aplicação foi empacotada em uma imagem Docker e executada dentro de um container, utilizando mapeamento de portas para acesso local.
 
+## 🐳 Tecnologias
+
+- Docker
+- Dockerfile
 - Java
 - Spring Boot
 - Maven
-- Docker
-- JSP
 - Git
 - GitHub
 
 ## 📋 Sobre o projeto
 
-Este projeto foi desenvolvido com o objetivo de colocar em prática conceitos de desenvolvimento de aplicações Java com Spring Boot, gerenciamento de dependências com Maven e containerização utilizando Docker.
+O objetivo principal deste projeto foi colocar em prática conceitos fundamentais de **Docker e containerização de aplicações**.
 
-Durante o desenvolvimento, foram praticados conceitos relacionados a:
+Durante o desenvolvimento, foram trabalhados conceitos como:
 
-- Desenvolvimento com Java e Spring Boot
-- Gerenciamento de dependências com Maven
-- Criação e configuração de Dockerfile
+- Criação de Dockerfile
 - Construção de imagens Docker
-- Execução de aplicações em containers
+- Execução de containers
 - Mapeamento de portas
-- Utilização do Git para versionamento
-- Publicação do projeto no GitHub
+- Utilização de imagens base
+- Multi-stage build
+- Empacotamento de aplicações Java em JAR
+- Execução de aplicações Spring Boot dentro de containers
+- Versionamento do projeto com Git e GitHub
 
-## 🐳 Docker
+## 🐳 Dockerfile
 
-O projeto possui um `Dockerfile` responsável pela criação da imagem da aplicação.
+O projeto utiliza um **Dockerfile com Multi-Stage Build**.
 
-### Criando a imagem
+Na primeira etapa, o Maven é utilizado para realizar o build da aplicação e gerar o arquivo `.jar`.
 
-```bash
-docker build -t spring-boot-docker:1.0 .
+Na segunda etapa, é utilizada uma imagem mais leve contendo apenas o ambiente necessário para executar a aplicação Java.
+
+Essa abordagem permite separar o processo de **build** do ambiente final de **execução**.
+
+### Estrutura simplificada
+
+```text
+Código Java
+     ↓
+   Maven
+     ↓
+   JAR
+     ↓
+ Dockerfile
+     ↓
+ Docker Image
+     ↓
+ Docker Container
+     ↓
+ Spring Boot
